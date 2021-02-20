@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeLiveTranscribe ~~Transcribe for free</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="n">
+
+</head>
+<body>
+    <div id="hero">
+        <div class="navbar">
+            <img src="imgs/logo.jpg" class="logo" alt="microphone">
+
+            <div class="user">
+            <!--
+                <ul>
+                  <li><a class="active" href="#">Home</a></li>
+                  <li><a href="how-to-get-millions-of-views-in-youtube-for-free.html">Blog</a></li>
+
+                  <li><a href="#about">About</a></li>
+                </ul>
+             -->
+            </div>
+            <div class="container">
+
+                 <div class="navbar">
+                    <img src="imgs/logo.jpg" class="logo" alt="microphone"><span></span>
+                 </div>
+                <div class="info">
+                    <h1>FreeLiveTranscribe</h1><br>
+                    <b>The free transcription tool</b>
+                    <p>Click on the below button to start transcribing...</p><br>
+                    <p><button onclick="runSpeechRecognition()" type="button">🎙️ Transcribe</button> &nbsp; <span id="action"></span></p>
+                    <div id="output" class="hide"></div>
+                            <script>
+                                /* JS comes here */
+                                function runSpeechRecognition() {
+                                    // get output div reference
+                                    var output = document.getElementById("output");
+                                    // get action element reference
+                                    var action = document.getElementById("action");
+                                    // new speech recognition object
+                                    var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+                                    var recognition = new SpeechRecognition();
+
+                                    // This runs when the speech recognition service starts
+                                    recognition.onstart = function() {
+                                        action.innerHTML = "<small>listening, please speak...</small>";
+                                    };
+
+                                    recognition.onspeechend = function() {
+                                        action.innerHTML = "<small>transcribing...</small>";
+                                        recognition.stop();
+                                    }
+
+                                    // This runs when the speech recognition service returns result
+                                    recognition.onresult = function(event) {
+                                        var transcript = event.results[0][0].transcript;
+                                        var confidence = event.results[0][0].confidence;
+                                        output.innerHTML = "<b>Text:</b> " + transcript;
+                                        output.classList.remove("hide");
+                                    };
+
+                                     // start recognition
+                                     recognition.start();
+                                }
+                                </script>
+
+                </div>
+            </div>
+            <div class="slider">
+                <div id="bottom_link">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
